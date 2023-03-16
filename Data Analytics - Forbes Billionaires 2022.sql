@@ -1,6 +1,12 @@
+
+-- Having a look at the Dataset
+
 select top 5 
 	*
-from forbes_billionaires_2022
+from 
+	forbes_billionaires_2022
+
+-- Deleting columns I won't need
 
 alter table forbes_billionaires_2022
 drop column bio, about
@@ -36,7 +42,7 @@ from
 where gender is not null
 group by gender
 
--- 4. Distribution of billionaires by gender and by country
+-- 4. Distribution of billionaires by gender and country
 
 select
 	country,
@@ -69,7 +75,7 @@ group by
 		else 'Bellow 30 '
 	end
 
--- 6. Distribution of billionaires by age range and by country
+-- 6. Distribution of billionaires by age range and country
 
 select
 	country,
@@ -92,7 +98,7 @@ group by
 order by country, [age range]
 
 
--- 7. Distribution of billionaires by age range and by gender
+-- 7. Distribution of billionaires by age range and gender
 
 select
 	gender,
@@ -114,7 +120,7 @@ group by
 	end, gender
 order by [age range], gender
 
--- 8. Distribution of billionaires by gender, by age range and by country
+-- 8. Distribution of billionaires by gender, age range and country
 
 select
 	country,
@@ -216,7 +222,7 @@ order by [avgFinalWorth(Billions)] desc
 
 select
 	gender,
-	sum(finalWorth)*1000 'totalFinalWorth(sum-Billions)'
+	sum(finalWorth)*1000 'totalFinalWorth(Billions)'
 from
 	forbes_billionaires_2022
 where gender is not null
